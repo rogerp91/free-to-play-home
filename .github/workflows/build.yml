@@ -26,4 +26,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: lint
-        run: ./gradlew home:lint home:detekt
+        run: ./gradlew home:lint
+        run: ./gradlew home:detekt

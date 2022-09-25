@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = project.jvmTargetVersion
     }
+    testOptions {
+        reportDir "$rootDir/test-reports"
+    }
 }
 
 dependencies {

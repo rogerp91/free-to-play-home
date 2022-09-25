@@ -26,10 +26,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: lint
-        run: ./gradlew home:lint
-  assemble:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: assembleRelease
-        run: ./gradlew assembleRelease
+        run: ./gradlew home:lint home:detekt

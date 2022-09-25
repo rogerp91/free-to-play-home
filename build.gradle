@@ -12,6 +12,11 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+tasks.withType(Test) {
+    reports {
+        junitXml.isEnabled = true
+    }
+}
 tasks.withType(Detekt).configureEach {
     reports {
         html.required.set(true)

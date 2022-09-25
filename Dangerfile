@@ -14,3 +14,5 @@ else
     # If you want to delete label
     # auto_label.delete("WIP")
 end
+
+junit.report

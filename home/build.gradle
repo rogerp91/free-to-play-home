@@ -1,7 +1,6 @@
 plugins {
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
-    id "jacoco"
     id "io.gitlab.arturbosch.detekt"
     id "maven-publish"
 }
@@ -29,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = project.jvmTargetVersion
     }
+    testOptions {
+        reportDir "$rootDir/test-reports"
+    }
 }
 
 dependencies {
@@ -36,9 +38,17 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$converterGsonVersion"
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttpBomVersion"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 
     // Test
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation("com.squareup.okhttp3:mockwebserver:$mockitoVersion")
+
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 }
@@ -59,3 +69,5 @@ afterEvaluate {
         }
     }
 }
+
+

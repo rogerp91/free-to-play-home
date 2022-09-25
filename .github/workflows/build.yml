@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
@@ -49,17 +49,14 @@ jobs:
           danger_id: 'danger-pr'
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  checks:
+  check:
     runs-on: ubuntu-latest
-    steps:
-      - name: Download Test Report
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: junit-test-results
-          workflow: ${{ github.event.workflow.id }}
-          run_id: ${{ github.event.workflow_run.id }}
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v3
-        with:
-          commit: ${{github.event.workflow_run.head_sha}}
-          report_paths: '**/build/test-results/test/TEST-*.xml'
+    steps:# AndroidTestReportAction
+    parse test result for android test report
+    - uses: actions/checkout@v3
+    - name: Unit tests
+      run: ./gradlew test
+      continue-on-error: true
+    - name: Make Unit test report
+      uses: doanpt/AndroidTestReportAction@v1.0
+      if: ${{ always() }}

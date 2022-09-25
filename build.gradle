@@ -23,6 +23,17 @@ tasks.withType(Detekt).configureEach {
     }
 }
 
+tasks.whenTaskAdded { task ->
+    if (System.getenv("CI") != null) {
+        if (task.name.contains("DebugUnitTest") || task.name.contains("debugUnitTest")) {
+            task.enabled = false
+        }
+        if (!task.name.contains("assemble") && task.project.name.contains("app")) {
+            task.enabled = false
+        }
+    }
+}
+
 junitJacoco {
     jacocoVersion = "0.8.7"
     ignoreProjects = []

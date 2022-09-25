@@ -19,5 +19,3 @@ warn("Big PR") if git.lines_of_code > 300
 warn("Large PR") if git.lines_of_code > 500
 warn("Huge PR") if git.lines_of_code > 700
 warn("Freakin Huge PR") if git.lines_of_code > 1000
-
-suggester.suggest

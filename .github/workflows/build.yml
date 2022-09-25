@@ -13,7 +13,7 @@ jobs:
       - name: test
         run: ./gradlew home:test
       - name: jacoco
-        run: ./gradlew home:jacocoTestReportRelease
+        run: ./gradlew jacocoTestReportRelease
       - name: coverage
         env:
           CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}

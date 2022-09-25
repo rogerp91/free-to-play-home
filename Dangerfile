@@ -11,3 +11,11 @@ warn("Please provide a Pull Request description ...") if github.pr_body.length <
 
 android_lint.report_file = "app/build/reports/lint-results-debug.xml"
 android_lint.lint
+
+junit.parse "/path/to/output.xml"
+junit.report
+
+android_permissions_checker.check(
+  apk: '/path/to/generated_apk_by_CI',
+  permission_list_file: '/path/to/permissions.txt'
+)

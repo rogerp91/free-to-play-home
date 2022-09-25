@@ -3,6 +3,7 @@ plugins {
     id "org.jetbrains.kotlin.android"
     id "jacoco"
     id "io.gitlab.arturbosch.detekt"
+    id "maven-publish"
 }
 
 android {
@@ -44,4 +45,17 @@ dependencies {
 
 detekt {
     config = files("$projectDir/../config/detekt.yml")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            debug(MavenPublication) {
+                from components.debug
+                groupId = project.applicationId
+                artifactId = "home"
+                version = "$versionName"
+            }
+        }
+    }
 }

@@ -9,7 +9,6 @@ plugins {
     id "com.vanniktech.android.junit.jacoco" version "$jacocoVersion"
 }
 
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
@@ -18,4 +17,9 @@ tasks.withType(Detekt).configureEach {
     reports {
         html.required.set(true)
     }
+}
+
+junitJacoco {
+    jacocoVersion = "0.8.7"
+    ignoreProjects = []
 }

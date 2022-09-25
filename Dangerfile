@@ -6,8 +6,3 @@ warn("This pull request is a Work in Progress and not ready to merge") if github
 
 warn("Please add labels to this PR") if github.pr_labels.empty?
 warn("Please provide a Pull Request description ...") if github.pr_body.length < 20
-
-warn("Big PR") if git.lines_of_code > 300
-warn("Large PR") if git.lines_of_code > 500
-warn("Huge PR") if git.lines_of_code > 700
-warn("Freakin Huge PR") if git.lines_of_code > 1000

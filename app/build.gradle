@@ -11,7 +11,6 @@ android {
         targetSdk project.androidTarget.toInteger()
         versionCode project.versionCode.toInteger()
         versionName project.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -34,9 +33,4 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-
-    // Test
-    testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 }

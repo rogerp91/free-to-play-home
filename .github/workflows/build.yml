@@ -23,14 +23,12 @@ jobs:
           ./codecov -t ${CODECOV_TOKEN}
   lint:
     runs-on: ubuntu-latest
-    needs: test
     steps:
       - uses: actions/checkout@v3
       - name: lint
         run: ./gradlew home:lint home:detekt
   danger:
     runs-on: ubuntu-latest
-    needs: [ test, lint ]
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
       - uses: actions/checkout@v3
